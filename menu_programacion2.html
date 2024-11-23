@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Hamburguesa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+        .menu-container {
+            background-color: #FFD971;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+        .header {
+            background-color: #f8e9a1;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .header h1 {
+            color: #d72638;
+        }
+        .header h3 {
+            color: #3a3d98;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item img {
+            width: 150px;
+            height: 150px;
+            margin-right: 15px;
+            border-radius: 10px;
+        }
+        .menu-item h3 {
+            margin: 0;
+            color: #d72638;
+        }
+        .menu-item p {
+            margin: 0;
+            color: #3a3d98;
+        }
+        .total-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .qr-code {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="header">
+            <h1>Mundo Hamburguesa</h1>
+            <h3>El lugar de la buena hamburguesa</h3>
+        </div>
+        <div class="menu-item">
+            <img src="https://png.pngtree.com/png-vector/20220619/ourmid/pngtree-hot-dog-food-realistic-element-png-image_5199484.png" alt="Hot Dog">
+            <div>
+                <h3>Hot Dog</h3>
+                <p>Precio: $15000</p>
+                <input type="checkbox" class="menu-checkbox" data-precio="15000">
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="https://image.similarpng.com/very-thumbnail/2020/04/Delicious-hamburger-png.png" alt="Hamburguesa">
+            <div>
+                <h3>Hamburguesa</h3>
+                <p>Precio: $18000</p>
+                <input type="checkbox" class="menu-checkbox" data-precio="18000">
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="https://e7.pngegg.com/pngimages/154/834/png-clipart-animated-illustration-of-two-doughnuts-donuts-food-donuts-thumbnail.png" alt="Donuts">
+            <div>
+                <h3>Donuts</h3>
+                <p>Precio: $5000</p>
+                <input type="checkbox" class="menu-checkbox" data-precio="5000">
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="https://img.lovepik.com/element/45007/3640.png_860.png" alt="Papas Fritas">
+            <div>
+                <h3>Papas Fritas</h3>
+                <p>Precio: $5000</p>
+                <input type="checkbox" class="menu-checkbox" data-precio="5000">
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="https://e1.pngegg.com/pngimages/118/748/png-clipart-recursos-coca-cola-glass-bottle.png" alt="Coca-Cola">
+            <div>
+                <h3>Coca-Cola (Personal)</h3>
+                <p>Precio: $2500</p>
+                <input type="checkbox" class="menu-checkbox" data-precio="2500">
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="https://w7.pngwing.com/pngs/586/1024/png-transparent-ice-cream-cones-sorbet-gelato-neapolitan-ice-cream-ice-cream-thumbnail.png" alt="Helado">
+            <div>
+                <h3>Helado (4 bolas)</h3>
+                <p>Precio: $10000</p>
+                <input type="checkbox" class="menu-checkbox" data-precio="10000">
+            </div>
+        </div>
+        <div class="total-container">
+            <button onclick="calcularTotal()">Calcular Total</button>
+            <p id="total"></p>
+        </div>
+        <div class="qr-code" id="qrCodeContainer"></div>
+    </div>
+
+    <script>
+        function calcularTotal() {
+            const checkboxes = document.querySelectorAll('.menu-checkbox');
+            let total = 0;
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    total += parseFloat(checkbox.getAttribute('data-precio'));
+                }
+            });
+            document.getElementById('total').innerText = 'Total a pagar: $' + total.toFixed(2);
+            generarQR();
+        }
+
+        
+    </script>
+</body>
+</html>
+
+
+
